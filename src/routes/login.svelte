@@ -1,6 +1,6 @@
 <script>
 	import { goto } from '$app/navigation';
-	import { AppwriteService } from '$lib/appwrite';
+	import { AppwriteService, user } from '$lib/appwrite';
 	import { onMount } from 'svelte';
 
 	let email = '';
@@ -11,7 +11,7 @@
 
 	onMount(async () => {
 		let account = await AppwriteService.getAccount();
-		if (account.email != '') {
+		if (account !== null) {
 			check = false;
 			goto('/user');
 		}
@@ -19,7 +19,7 @@
 
 	function onLogin() {
 		let promise = AppwriteService.login(email, password);
-
+        
 		promise.then(
 			function (response) {
 				console.log(response); // Success
@@ -35,13 +35,6 @@
 
 {#if check}
 	<form class="pt-5">
-		<img
-			class="mb-4"
-			src="/docs/5.2/assets/brand/bootstrap-logo.svg"
-			alt=""
-			width="72"
-			height="57"
-		/>
 		<h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
 		<div class="form-floating mt-2">

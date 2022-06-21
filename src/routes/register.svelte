@@ -9,7 +9,7 @@
 
 	onMount(async () => {
 		let account = await AppwriteService.getAccount();
-		if (account.email != '') {
+		if (account !== null) {
 			goto('/user');
 		}
 	});
@@ -30,7 +30,6 @@
 </script>
 
 <form class="pt-5">
-	<img class="mb-4" src="/docs/5.2/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57" />
 	<h1 class="h3 mb-3 fw-normal">Please register</h1>
 	<div class="form-floating mt-2">
 		<input

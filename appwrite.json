@@ -1,0 +1,152 @@
+{
+    "projectId": "coddit",
+    "projectName": "Coddit",
+    "collections": [
+        {
+            "$id": "profiles",
+            "$read": [],
+            "$write": [],
+            "name": "profiles",
+            "enabled": true,
+            "permission": "document",
+            "attributes": [
+                {
+                    "key": "nick_name",
+                    "type": "string",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                }
+            ],
+            "indexes": []
+        },
+        {
+            "$id": "subcoddit",
+            "$read": [],
+            "$write": [],
+            "name": "subcoddit",
+            "enabled": true,
+            "permission": "document",
+            "attributes": [
+                {
+                    "key": "rules",
+                    "type": "string",
+                    "status": "available",
+                    "required": false,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                },
+                {
+                    "key": "imgId",
+                    "type": "string",
+                    "status": "available",
+                    "required": false,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                },
+                {
+                    "key": "description",
+                    "type": "string",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                },
+                {
+                    "key": "createDate",
+                    "type": "integer",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "min": -9223372036854776000,
+                    "max": 9223372036854776000,
+                    "default": null
+                },
+                {
+                    "key": "name",
+                    "type": "string",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                }
+            ],
+            "indexes": []
+        },
+        {
+            "$id": "subpost",
+            "$read": [],
+            "$write": [],
+            "name": "subpost",
+            "enabled": true,
+            "permission": "document",
+            "attributes": [
+                {
+                    "key": "title",
+                    "type": "string",
+                    "status": "available",
+                    "required": false,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                },
+                {
+                    "key": "content",
+                    "type": "string",
+                    "status": "available",
+                    "required": false,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                },
+                {
+                    "key": "subcoddit",
+                    "type": "string",
+                    "status": "available",
+                    "required": false,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                },
+                {
+                    "key": "imgId",
+                    "type": "string",
+                    "status": "available",
+                    "required": false,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                },
+                {
+                    "key": "createDate",
+                    "type": "integer",
+                    "status": "available",
+                    "required": false,
+                    "array": false,
+                    "min": -9223372036854776000,
+                    "max": 9223372036854776000,
+                    "default": null
+                }
+            ],
+            "indexes": [
+                {
+                    "key": "subcoddit",
+                    "type": "key",
+                    "status": "available",
+                    "attributes": [
+                        "subcoddit"
+                    ],
+                    "orders": [
+                        "ASC"
+                    ]
+                }
+            ]
+        }
+    ]
+}
