@@ -31,7 +31,7 @@ export type Post = {
 
 export type Comment = {
 	userName: string;
-	createdate: Date;
+	createdate: number;
 	content: string;
 	userId: string;
 	postId: string;
@@ -91,7 +91,7 @@ export const AppwriteService = {
 				rules: rules,
 				imgId: file.$id,
 				description: description,
-				createDate: Date.now(),
+				createDate: Math.round(Date.now() / 1000),
 				name: name
 			},
 			['role:all']
@@ -113,7 +113,7 @@ export const AppwriteService = {
 				title: title,
 				imgId: file.$id,
 				content: content,
-				createDate: Date.now(),
+				createDate: Math.round(Date.now() / 1000),
 				subcoddit: subCodit,
 				profileid: name.$id,
 				profileName: name.nick_name
@@ -127,7 +127,7 @@ export const AppwriteService = {
 			'unique()',
 			{
 				userName: userName,
-				createdate: Date.now(),
+				createdate: Math.round(Date.now() / 1000),
 				content: content,
 				userId: userId,
 				postId: postId
