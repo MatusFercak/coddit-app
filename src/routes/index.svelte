@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import { AppwriteService, user, type Post, type Subcoddit } from '$lib/appwrite';
+	import { AppwriteService, user, type Post, type Coddit } from '$lib/appwrite';
 	import { onMount } from 'svelte';
 	import { writable } from 'svelte/store';
 
-	let subcodditsArray: Subcoddit[] = [];
+	let subcodditsArray: Coddit[] = [];
 	let postsArray: Post[] = [];
 
 	function onCreate() {
@@ -17,12 +17,12 @@
 	}
 
 	function getImg(imgId: string) {
-		const url = AppwriteService.getSubcodditImg(imgId);
+		const url = AppwriteService.getCodditImg(imgId);
 		return url.toString();
 	}
 
 	onMount(async () => {
-		let subcoddits = await AppwriteService.getSubcoddits();
+		let subcoddits = await AppwriteService.getCoddits();
 		let posts = await AppwriteService.getPostsAll();
 		if (subcoddits) {
 			console.log(subcoddits.documents);

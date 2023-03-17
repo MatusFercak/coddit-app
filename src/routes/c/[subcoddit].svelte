@@ -1,14 +1,13 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
-	import { AppwriteService, user, type Post, type Subcoddit } from '$lib/appwrite';
+	import { AppwriteService, user, type Post, type Coddit } from '$lib/appwrite';
 	import { onMount } from 'svelte';
-	import Id from './[subcoddit]/[id].svelte';
 
 	const subCodId: string = $page.params.subcoddit;
 
 	let posts: Post[] = [];
-	let subCoddit: Subcoddit;
+	let subCoddit: Coddit;
 	let urlImg: string;
 	let loading: boolean = false;
 	let curentUser: any;
@@ -19,13 +18,13 @@
 
 	async function getName(profId: string) {
 		let profile = await AppwriteService.getProfile(profId);
-		console.log(profile.nick_name);
-		return profile.nick_name;
+		console.log(profile.nickName);
+		return profile.nick_nickNamename;
 	}
 
 	onMount(async () => {
-		const document = await AppwriteService.getSubcoddit(subCodId);
-		const img = await AppwriteService.getSubcodditImg(document.imgId);
+		const document = await AppwriteService.getCoddit(subCodId);
+		const img = await AppwriteService.getCodditImg(document.imgId);
 		const post = await AppwriteService.getPosts(subCodId);
 		const user = await AppwriteService.getAccount();
 		curentUser = user;
@@ -67,10 +66,8 @@
 								<div class="d-flex justify-content-between align-items-center">
 									<div class="btn-group">
 										<a href="/c/{subCodId}/{p.$id}"
-											><button
-												href="/c/{subCodId}/{p.$id}"
-												type="button"
-												class="btn btn-sm btn-outline-secondary">Read More</button
+											><button type="button" class="btn btn-sm btn-outline-secondary"
+												>Read More</button
 											></a
 										>
 									</div>

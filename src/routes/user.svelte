@@ -12,7 +12,7 @@
 		if (account) {
 			let profile = await AppwriteService.getProfile(account.$id);
 			email = account.email;
-			nickName = profile.nick_name;
+			nickName = profile.nickName;
 		}
 	});
 

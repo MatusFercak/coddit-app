@@ -3,7 +3,6 @@
 
 	import { page } from '$app/stores';
 	import { AppwriteService, type Post, type Profile, type Comment } from '$lib/appwrite';
-	import { Appwrite } from 'appwrite';
 	import { onMount } from 'svelte';
 
 	let comments: Comment[] = [];
@@ -34,12 +33,12 @@
 		const com = await AppwriteService.getComments(codId);
 		const document = await AppwriteService.getPost(codId);
 		const img = await AppwriteService.getPostImg(document.imgId);
-		const user = await AppwriteService.getProfile(document.profileid);
+		const user = await AppwriteService.getProfile(document.profileId);
 		const userC = await AppwriteService.getAccountPro();
 		if (userC) {
 			const userComment = await AppwriteService.getProfile(userC.$id);
 			curentUserId = userComment.$id;
-			curentUserName = userComment.nick_name;
+			curentUserName = userComment.nickName;
 			console.log('NAME : ' + curentUserName + ' ID : ' + curentUserId);
 		}
 		comments = com.documents;
@@ -70,7 +69,7 @@
 					><h3>c/{$page.params.subcoddit}</h3>
 				</a>
 				<h1 class="mt-2 mx-5 px-2 rounded">{actualDocument.title}</h1>
-				<p class="mt-2 mb-5 mx-5 px-2 rounded">@{postOwner.nick_name}</p>
+				<p class="mt-2 mb-5 mx-5 px-2 rounded">@{postOwner.nickName}</p>
 			</div>
 		</div>
 	</div>
@@ -84,7 +83,7 @@
 				<p class="pb-3 mb-0 small lh-sm border-bottom" style="width: 100%;">
 					<strong class="d-block text-gray-dark">@{com.userName}</strong>
 					<strong class="d-block text-gray-dark"
-						>{new Date(com.createdate * 1000).toLocaleString()}</strong
+						>{new Date(com.$createdAt).toLocaleString()}</strong
 					>
 					{com.content}
 				</p>

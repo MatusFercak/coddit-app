@@ -10,7 +10,7 @@
 	let slug: string;
 
 	async function createSub() {
-		const file = await AppwriteService.addSubcoddit(rules, description, name, fileVar[0], slug);
+		await AppwriteService.addCoddit(rules, description, name, fileVar[0], slug);
 		goto('/');
 	}
 </script>
