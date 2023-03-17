@@ -37,6 +37,7 @@
 
 <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
 	{#each subcodditsArray as c (c.$id)}
+		<!-- svelte-ignore a11y-click-events-have-key-events -->
 		<div
 			style="cursor: pointer;"
 			class="col hover-zoom"
